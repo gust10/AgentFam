@@ -53,9 +53,19 @@ struct ActiveAgentView: View {
                     .frame(width: 96, height: 96)
                     .shadow(color: agent.color.opacity(0.4), radius: 12)
 
-                HumanAvatarView(style: agent.avatarStyle)
-                    .frame(width: 86, height: 86)
-                    .clipShape(Circle())
+                if let iconName = agent.iconName,
+                   let img = Bundle.module.url(forResource: iconName, withExtension: "png"),
+                   let nsImage = NSImage(contentsOf: img) {
+                    Image(nsImage: nsImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 86, height: 86)
+                        .clipShape(Circle())
+                } else {
+                    HumanAvatarView(style: agent.avatarStyle)
+                        .frame(width: 86, height: 86)
+                        .clipShape(Circle())
+                }
             }
 
             // Name + role
@@ -95,11 +105,23 @@ struct ActiveAgentView: View {
             // Overlapping mini-avatars hint
             ZStack {
                 ForEach(Array(agents.prefix(4).enumerated()), id: \.offset) { index, agent in
-                    HumanAvatarView(style: agent.avatarStyle)
-                        .frame(width: 34, height: 34)
-                        .clipShape(Circle())
-                        .overlay(Circle().strokeBorder(.black.opacity(0.2), lineWidth: 1))
-                        .offset(x: CGFloat(index) * 20 - 30)
+                    if let iconName = agent.iconName,
+                       let img = Bundle.module.url(forResource: iconName, withExtension: "png"),
+                       let nsImage = NSImage(contentsOf: img) {
+                        Image(nsImage: nsImage)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 34, height: 34)
+                            .clipShape(Circle())
+                            .overlay(Circle().strokeBorder(.black.opacity(0.2), lineWidth: 1))
+                            .offset(x: CGFloat(index) * 20 - 30)
+                    } else {
+                        HumanAvatarView(style: agent.avatarStyle)
+                            .frame(width: 34, height: 34)
+                            .clipShape(Circle())
+                            .overlay(Circle().strokeBorder(.black.opacity(0.2), lineWidth: 1))
+                            .offset(x: CGFloat(index) * 20 - 30)
+                    }
                 }
             }
             .frame(height: 38)

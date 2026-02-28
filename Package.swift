@@ -10,8 +10,11 @@ let package = Package(
         .executableTarget(
             name: "VividTeam",
             path: "VividTeam",
-            exclude: ["Info.plist"]
-            // To add agent.glb: resources: [.copy("agent.glb")]
+            exclude: ["Info.plist"],
+            resources: [
+                .copy("study-buddy-icon.png"),
+                .copy("news-anchor-icon.png")
+            ]
         )
     ]
 )
