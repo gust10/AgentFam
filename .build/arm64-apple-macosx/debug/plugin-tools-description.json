@@ -48,6 +48,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift"
         },
         {
@@ -96,6 +100,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift"
         },
         {
@@ -117,6 +125,7 @@
         "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.swift.o",
         "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.swift.o",
         "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swift.o",
+        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o",
         "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swift.o",
         "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.swift.o",
         "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.swift.o",
@@ -129,6 +138,7 @@
         "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.swift.o",
         "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.swift.o",
         "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swift.o",
+        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o",
         "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.swift.o"
       ],
       "otherArguments" : [
@@ -214,6 +224,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swift.o"
         },
         {
@@ -262,6 +276,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.swift.o"
         },
         {
@@ -277,6 +295,7 @@
         "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationWindow.swift",
         "/Users/gust10/Documents/AgentFam/VividTeam/AlertOverlayWindow.swift",
         "/Users/gust10/Documents/AgentFam/VividTeam/AppDelegate.swift",
+        "/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift",
         "/Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift",
         "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsConvAI.swift",
         "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsTTSSocket.swift",
@@ -289,6 +308,7 @@
         "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindow.swift",
         "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindowManager.swift",
         "/Users/gust10/Documents/AgentFam/VividTeam/SceneViewWrapper.swift",
+        "/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift",
         "/Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift"
       ],
       "tempsPath" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build",
@@ -312,6 +332,7 @@
       "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationWindow.swift",
       "/Users/gust10/Documents/AgentFam/VividTeam/AlertOverlayWindow.swift",
       "/Users/gust10/Documents/AgentFam/VividTeam/AppDelegate.swift",
+      "/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift",
       "/Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift",
       "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsConvAI.swift",
       "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsTTSSocket.swift",
@@ -324,6 +345,7 @@
       "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindow.swift",
       "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindowManager.swift",
       "/Users/gust10/Documents/AgentFam/VividTeam/SceneViewWrapper.swift",
+      "/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift",
       "/Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift",
       "-I",
       "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/Modules",
@@ -448,6 +470,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift"
         },
         {
@@ -496,6 +522,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift"
         }
       ],
@@ -531,6 +561,10 @@
         {
           "kind" : "file",
           "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o"
         },
         {
           "kind" : "file",
@@ -579,6 +613,10 @@
         {
           "kind" : "file",
           "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o"
         },
         {
           "kind" : "file",

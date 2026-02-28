@@ -9,13 +9,39 @@ import AppKit
 struct OverlayContentView: View {
 
     @State private var selectedAgentID: String? = nil
+    @State private var convAI = ElevenLabsConvAI(config: ElevenLabsConvAIConfig(
+        apiKey:  Secrets.elevenLabsAPIKey,
+        agentID: Secrets.elevenLabsAgentID
+    ))
 
     var body: some View {
         // NSVisualEffectView (set in OverlayWindow) provides the glass background.
         // This SwiftUI layer is fully transparent — only the dock content paints.
-        AgentDockView(selectedID: $selectedAgentID)
-            // Right-click anywhere on the shelf → personalise, hide, or quit.
-            .contextMenu {
+        VStack(spacing: 0) {
+            // ── Conversation status strip (visible only when an agent is active) ──
+            if selectedAgentID != nil {
+                ConvAIStatusStrip(state: convAI.state,
+                                  agentText: convAI.agentText,
+                                  userText:  convAI.userText)
+            }
+            AgentDockView(selectedID: $selectedAgentID)
+        }
+        .onChange(of: selectedAgentID) { _, newID in
+            if let id = newID {
+                let agent = AgentDockView.catalogue.first { $0.id == id }
+                convAI.start()
+                ConvAIChatWindow.show(
+                    convAI:     convAI,
+                    agentName:  agent?.fullName ?? "Agent",
+                    agentColor: agent?.color    ?? .cyan
+                )
+            } else {
+                convAI.stop()
+                ConvAIChatWindow.hide()
+            }
+        }
+        // Right-click anywhere on the shelf → personalise, hide, or quit.
+        .contextMenu {
                 Button("Personalize Agents…") {
                     AgentPersonalizationWindow.show()
                 }
@@ -35,5 +61,52 @@ struct OverlayContentView: View {
                 Divider()
                 Button("Quit VividTeam") { NSApp.terminate(nil) }
             }
+    }
+}
+
+// MARK: - Conversation status strip
+
+private struct ConvAIStatusStrip: View {
+    let state:     ElevenLabsConvAI.State
+    let agentText: String
+    let userText:  String
+
+    private var label: String {
+        switch state {
+        case .provisioning:  return "Setting up agent…"
+        case .connecting:    return "Connecting…"
+        case .listening:     return userText.isEmpty ? "Listening…" : userText
+        case .agentSpeaking: return agentText.isEmpty ? "Speaking…"  : agentText
+        case .idle:          return ""
+        }
+    }
+
+    private var dotColor: Color {
+        switch state {
+        case .provisioning:  return .yellow
+        case .connecting:    return .orange
+        case .listening:     return .green
+        case .agentSpeaking: return .cyan
+        case .idle:          return .gray
+        }
+    }
+
+    var body: some View {
+        HStack(spacing: 5) {
+            Circle()
+                .fill(dotColor)
+                .frame(width: 6, height: 6)
+                .shadow(color: dotColor.opacity(0.8), radius: 3)
+            Text(label)
+                .font(.system(size: 10, weight: .medium))
+                .foregroundStyle(.primary.opacity(0.85))
+                .lineLimit(1)
+                .truncationMode(.tail)
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 4)
+        .frame(maxWidth: .infinity)
+        .transition(.opacity.combined(with: .move(edge: .top)))
+        .animation(.easeInOut(duration: 0.2), value: label)
     }
 }

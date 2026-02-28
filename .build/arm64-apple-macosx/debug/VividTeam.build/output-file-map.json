@@ -44,6 +44,13 @@
     "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swiftdeps",
     "diagnostics": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.dia"
   },
+  "/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.dia"
+  },
   "/Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift": {
     "dependencies": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.d",
     "object": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swift.o",
@@ -127,6 +134,13 @@
     "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper~partial.swiftmodule",
     "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swiftdeps",
     "diagnostics": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.dia"
   },
   "/Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift": {
     "dependencies": "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.d",

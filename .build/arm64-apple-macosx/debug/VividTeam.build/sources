@@ -4,6 +4,7 @@
 /Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationWindow.swift
 /Users/gust10/Documents/AgentFam/VividTeam/AlertOverlayWindow.swift
 /Users/gust10/Documents/AgentFam/VividTeam/AppDelegate.swift
+/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift
 /Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift
 /Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsConvAI.swift
 /Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsTTSSocket.swift
@@ -16,4 +17,5 @@
 /Users/gust10/Documents/AgentFam/VividTeam/OverlayWindow.swift
 /Users/gust10/Documents/AgentFam/VividTeam/OverlayWindowManager.swift
 /Users/gust10/Documents/AgentFam/VividTeam/SceneViewWrapper.swift
+/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift
 /Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift
