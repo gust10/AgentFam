@@ -1,16 +1,28 @@
 // OverlayWindowManager.swift
 // Observable state controller for the overlay window's lifecycle and visibility.
-//
-// This class is the single source of truth for whether the overlay is shown.
-// It owns the OverlayWindow instance so the window is never deallocated while
-// the app is running — important because borderless NSWindows with
-// isReleasedWhenClosed = false rely on a strong external owner.
-//
-// @Observable (Observation framework, macOS 14+) lets SwiftUI views observe
-// `isVisible` changes without using @Published / ObservableObject boilerplate.
+// Handles snap-to-edge: when the user drags the dock near top/bottom/left/right,
+// it snaps into place and (for left/right) switches to vertical icon layout.
 
 import AppKit
 import Observation
+
+// MARK: - Snap edge
+
+enum DockSnapEdge: Equatable {
+    case bottom  // horizontal bar at bottom
+    case top     // horizontal bar at top
+    case left    // vertical stack on left
+    case right   // vertical stack on right
+
+    var isVertical: Bool {
+        switch self {
+        case .left, .right: return true
+        case .bottom, .top: return false
+        }
+    }
+}
+
+// MARK: - Manager
 
 @Observable
 final class OverlayWindowManager {
@@ -20,59 +32,178 @@ final class OverlayWindowManager {
     /// Whether the overlay window is currently shown on screen.
     private(set) var isVisible: Bool = false
 
+    /// Current snap edge; determines dock layout (horizontal vs vertical) and position.
+    private(set) var currentSnapEdge: DockSnapEdge = .bottom
+
     // MARK: - Private state
 
-    /// The single overlay NSWindow instance. Created once; never recreated.
     private var overlayWindow: OverlayWindow?
+    private var mouseDownMonitor: Any?
+    private var mouseUpMonitor: Any?
+    private var isDragging = false
+
+    /// Distance from screen edge (pt) within which we snap.
+    private let snapThreshold: CGFloat = 80
+    private let margin: CGFloat = 16
 
     // MARK: - Public API
 
-    /// Creates the overlay window and displays it for the first time.
-    /// Call this once from AppDelegate.applicationDidFinishLaunching.
     func createAndShowOverlay() {
-        let window = OverlayWindow()
+        let window = OverlayWindow(manager: self)
         self.overlayWindow = window
 
-        // Position centred at the bottom of the screen, above the Dock.
         positionAtBottomCenter(window)
-
-        // Show the window and make it capable of receiving keyboard focus
-        // (required for the TextField in the chat bar).
         window.makeKeyAndOrderFront(nil)
         isVisible = true
+
+        setupDragMonitors()
     }
 
-    /// Shows or hides the overlay.
     func setVisible(_ visible: Bool) {
         guard let window = overlayWindow else { return }
         if visible {
             window.makeKeyAndOrderFront(nil)
         } else {
-            // orderOut removes the window from the screen without deallocating it
-            // (because isReleasedWhenClosed = false on OverlayWindow).
             window.orderOut(nil)
         }
         isVisible = visible
     }
 
-    /// Toggles overlay visibility.
     func toggleVisibility() {
         setVisible(!isVisible)
     }
 
+    /// Called when user releases mouse after dragging. Only snaps if the window
+    /// is within snapThreshold of an edge; otherwise leaves it where the user dropped it.
+    func snapIfNeeded() {
+        guard isDragging, let window = overlayWindow else { return }
+        isDragging = false
+
+        guard let screen = NSScreen.main else { return }
+        let screenFrame = screen.visibleFrame
+        let frame = window.frame
+
+        let distLeft   = frame.minX - screenFrame.minX
+        let distRight  = screenFrame.maxX - frame.maxX
+        let distBottom = frame.minY - screenFrame.minY
+        let distTop    = screenFrame.maxY - frame.maxY
+
+        let nearLeft   = distLeft   < snapThreshold
+        let nearRight  = distRight  < snapThreshold
+        let nearBottom = distBottom < snapThreshold
+        let nearTop    = distTop    < snapThreshold
+
+        // Only snap when actually near at least one edge; otherwise leave window where it is.
+        if !nearLeft && !nearRight && !nearBottom && !nearTop {
+            currentSnapEdge = .bottom
+            // If we were in vertical layout, resize back to horizontal and keep center.
+            let horizontalSize = OverlayWindow.size(for: .bottom)
+            if abs(window.frame.width - horizontalSize.width) > 1 {
+                let centerX = frame.midX
+                let centerY = frame.midY
+                let newFrame = NSRect(
+                    x: centerX - horizontalSize.width / 2,
+                    y: centerY - horizontalSize.height / 2,
+                    width: horizontalSize.width,
+                    height: horizontalSize.height
+                )
+                NSAnimationContext.runAnimationGroup { ctx in
+                    ctx.duration = 0.25
+                    ctx.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+                    window.animator().setFrame(newFrame, display: true)
+                }
+            }
+            return
+        }
+
+        let newEdge: DockSnapEdge
+        let newFrame: NSRect
+
+        if nearLeft && (distLeft <= distRight && distLeft <= distBottom && distLeft <= distTop) {
+            newEdge = .left
+            newFrame = frameFor(snapEdge: .left, screenFrame: screenFrame)
+        } else if nearRight && (distRight <= distLeft && distRight <= distBottom && distRight <= distTop) {
+            newEdge = .right
+            newFrame = frameFor(snapEdge: .right, screenFrame: screenFrame)
+        } else if nearTop && (nearBottom ? distTop <= distBottom : true) {
+            newEdge = .top
+            newFrame = frameFor(snapEdge: .top, screenFrame: screenFrame)
+        } else {
+            newEdge = .bottom
+            newFrame = frameFor(snapEdge: .bottom, screenFrame: screenFrame)
+        }
+
+        currentSnapEdge = newEdge
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.25
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            window.animator().setFrame(newFrame, display: true)
+        }
+    }
+
+    func setDragging(_ dragging: Bool) {
+        isDragging = dragging
+    }
+
     // MARK: - Positioning
 
-    /// Places the shelf centred horizontally, just above the Dock.
+    private func frameFor(snapEdge edge: DockSnapEdge, screenFrame: NSRect) -> NSRect {
+        let size = OverlayWindow.size(for: edge)
+        switch edge {
+        case .bottom:
+            return NSRect(
+                x: screenFrame.midX - size.width / 2,
+                y: screenFrame.minY + margin,
+                width: size.width,
+                height: size.height
+            )
+        case .top:
+            return NSRect(
+                x: screenFrame.midX - size.width / 2,
+                y: screenFrame.maxY - margin - size.height,
+                width: size.width,
+                height: size.height
+            )
+        case .left:
+            return NSRect(
+                x: screenFrame.minX + margin,
+                y: screenFrame.midY - size.height / 2,
+                width: size.width,
+                height: size.height
+            )
+        case .right:
+            return NSRect(
+                x: screenFrame.maxX - margin - size.width,
+                y: screenFrame.midY - size.height / 2,
+                width: size.width,
+                height: size.height
+            )
+        }
+    }
+
     private func positionAtBottomCenter(_ window: NSWindow) {
         guard let screen = NSScreen.main else { return }
+        window.setFrame(frameFor(snapEdge: .bottom, screenFrame: screen.visibleFrame), display: true)
+    }
 
-        let screenFrame = screen.visibleFrame   // excludes menu bar + Dock
-        let windowSize  = window.frame.size
-        let margin: CGFloat = 16
+    private func setupDragMonitors() {
+        mouseDownMonitor = NSEvent.addLocalMonitorForEvents(matching: .leftMouseDown) { [weak self] event in
+            guard let self, let window = self.overlayWindow else { return event }
+            let screenLoc = NSEvent.mouseLocation
+            let windowFrame = window.frame
+            if windowFrame.contains(CGPoint(x: screenLoc.x, y: screenLoc.y)) {
+                self.isDragging = true
+            }
+            return event
+        }
+        mouseUpMonitor = NSEvent.addLocalMonitorForEvents(matching: .leftMouseUp) { [weak self] event in
+            self?.snapIfNeeded()
+            return event
+        }
+    }
 
-        let x = screenFrame.midX - windowSize.width  / 2
-        let y = screenFrame.minY + margin
-
-        window.setFrameOrigin(NSPoint(x: x, y: y))
+    deinit {
+        if let m = mouseDownMonitor { NSEvent.removeMonitor(m) }
+        if let m = mouseUpMonitor { NSEvent.removeMonitor(m) }
     }
 }

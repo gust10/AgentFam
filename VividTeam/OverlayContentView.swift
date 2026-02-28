@@ -8,6 +8,8 @@ import AppKit
 
 struct OverlayContentView: View {
 
+    let manager: OverlayWindowManager
+
     @State private var selectedAgentID: String? = nil
     @State private var convAI = ElevenLabsConvAI(config: ElevenLabsConvAIConfig(
         apiKey:  Secrets.elevenLabsAPIKey,
@@ -15,16 +17,13 @@ struct OverlayContentView: View {
     ))
 
     var body: some View {
-        // NSVisualEffectView (set in OverlayWindow) provides the glass background.
-        // This SwiftUI layer is fully transparent — only the dock content paints.
         VStack(spacing: 0) {
-            // ── Conversation status strip (visible only when an agent is active) ──
             if selectedAgentID != nil {
                 ConvAIStatusStrip(state: convAI.state,
                                   agentText: convAI.agentText,
                                   userText:  convAI.userText)
             }
-            AgentDockView(selectedID: $selectedAgentID)
+            AgentDockView(selectedID: $selectedAgentID, snapEdge: manager.currentSnapEdge)
         }
         .onChange(of: selectedAgentID) { _, newID in
             if let id = newID {

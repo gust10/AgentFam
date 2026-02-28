@@ -23,14 +23,22 @@ import SwiftUI
 
 final class OverlayWindow: NSWindow {
 
-    // Tightly wraps the dock shelf: 5 × 58px avatars + gaps + shelf padding.
-    // Extra height (140) gives room for hover magnification without clipping.
-    static let defaultSize = NSSize(width: 390, height: 140)
+    // Horizontal bar: 5 icons + gaps + padding.
+    static let horizontalSize = NSSize(width: 390, height: 140)
+    // Vertical stack: single column (avatar + label column).
+    static let verticalSize = NSSize(width: 130, height: 450)
+
+    static func size(for edge: DockSnapEdge) -> NSSize {
+        edge.isVertical ? verticalSize : horizontalSize
+    }
+
+    private weak var manager: OverlayWindowManager?
 
     // MARK: - Initialization
 
-    init() {
-        let contentRect = NSRect(origin: .zero, size: OverlayWindow.defaultSize)
+    init(manager: OverlayWindowManager) {
+        self.manager = manager
+        let contentRect = NSRect(origin: .zero, size: OverlayWindow.horizontalSize)
 
         super.init(
             contentRect: contentRect,
@@ -41,7 +49,7 @@ final class OverlayWindow: NSWindow {
 
         configureAppearance()
         configureWindowBehaviour()
-        embedContent()
+        embedContent(manager: manager)
     }
 
     // MARK: - Appearance
@@ -77,10 +85,9 @@ final class OverlayWindow: NSWindow {
 
     // MARK: - Content embedding
 
-    private func embedContent() {
-        let size = OverlayWindow.defaultSize
+    private func embedContent(manager: OverlayWindowManager) {
+        let size = OverlayWindow.horizontalSize
 
-        // ── 1. NSVisualEffectView — frosted-glass background ──────────────────
         let vfv = NSVisualEffectView(frame: NSRect(origin: .zero, size: size))
         vfv.material          = .hudWindow
         vfv.blendingMode      = .behindWindow
@@ -92,8 +99,7 @@ final class OverlayWindow: NSWindow {
         vfv.layer?.borderColor   = CGColor.clear
         vfv.autoresizingMask     = [.width, .height]
 
-        // ── 2. NSHostingView — SwiftUI content on top ─────────────────────────
-        let hostingView = NSHostingView(rootView: OverlayContentView())
+        let hostingView = NSHostingView(rootView: OverlayContentView(manager: manager))
         hostingView.frame            = NSRect(origin: .zero, size: size)
         hostingView.autoresizingMask = [.width, .height]
         hostingView.wantsLayer       = true
