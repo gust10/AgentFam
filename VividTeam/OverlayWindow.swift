@@ -29,8 +29,14 @@ final class OverlayWindow: NSWindow {
     // Expanded: one large selected icon + four smaller grayed.
     static let horizontalExpandedSize = NSSize(width: 420, height: 220)
     static let verticalExpandedSize  = NSSize(width: 220, height: 450)
+    // Peek strip when collapsed: small arrow at edge.
+    static let horizontalPeekSize = NSSize(width: 48, height: 22)
+    static let verticalPeekSize   = NSSize(width: 22, height: 48)
 
-    static func size(for edge: DockSnapEdge, expanded: Bool = false) -> NSSize {
+    static func size(for edge: DockSnapEdge, expanded: Bool = false, isCollapsed: Bool = false) -> NSSize {
+        if isCollapsed {
+            return edge.isVertical ? verticalPeekSize : horizontalPeekSize
+        }
         if edge.isVertical {
             return expanded ? verticalExpandedSize : verticalCompactSize
         }

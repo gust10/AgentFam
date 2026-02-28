@@ -38,16 +38,21 @@ final class OverlayWindowManager {
     /// True when an agent is selected; window uses expanded size and layout.
     private(set) var hasSelection: Bool = false
 
+    /// True when dock is collapsed to the small arrow strip.
+    private(set) var isCollapsed: Bool = false
+
     // MARK: - Private state
 
     private var overlayWindow: OverlayWindow?
     private var mouseDownMonitor: Any?
     private var mouseUpMonitor: Any?
     private var isDragging = false
+    private var autoHideWorkItem: DispatchWorkItem?
 
     /// Distance from screen edge (pt) within which we snap.
     private let snapThreshold: CGFloat = 80
     private let margin: CGFloat = 16
+    private let autoHideInterval: TimeInterval = 10
 
     // MARK: - Public API
 
@@ -58,6 +63,7 @@ final class OverlayWindowManager {
         positionAtBottomCenter(window)
         window.makeKeyAndOrderFront(nil)
         isVisible = true
+        resetAutoHideTimer()
 
         setupDragMonitors()
     }
@@ -100,7 +106,7 @@ final class OverlayWindowManager {
         if !nearLeft && !nearRight && !nearBottom && !nearTop {
             currentSnapEdge = .bottom
             // If we were in vertical layout, resize back to horizontal and keep center.
-            let horizontalSize = OverlayWindow.size(for: .bottom, expanded: hasSelection)
+            let horizontalSize = OverlayWindow.size(for: .bottom, expanded: hasSelection, isCollapsed: isCollapsed)
             if abs(window.frame.width - horizontalSize.width) > 1 {
                 let centerX = frame.midX
                 let centerY = frame.midY
@@ -124,16 +130,16 @@ final class OverlayWindowManager {
 
         if nearLeft && (distLeft <= distRight && distLeft <= distBottom && distLeft <= distTop) {
             newEdge = .left
-            newFrame = frameFor(snapEdge: .left, expanded: hasSelection, screenFrame: screenFrame)
+            newFrame = frameFor(snapEdge: .left, expanded: hasSelection, isCollapsed: isCollapsed, screenFrame: screenFrame)
         } else if nearRight && (distRight <= distLeft && distRight <= distBottom && distRight <= distTop) {
             newEdge = .right
-            newFrame = frameFor(snapEdge: .right, expanded: hasSelection, screenFrame: screenFrame)
+            newFrame = frameFor(snapEdge: .right, expanded: hasSelection, isCollapsed: isCollapsed, screenFrame: screenFrame)
         } else if nearTop && (nearBottom ? distTop <= distBottom : true) {
             newEdge = .top
-            newFrame = frameFor(snapEdge: .top, expanded: hasSelection, screenFrame: screenFrame)
+            newFrame = frameFor(snapEdge: .top, expanded: hasSelection, isCollapsed: isCollapsed, screenFrame: screenFrame)
         } else {
             newEdge = .bottom
-            newFrame = frameFor(snapEdge: .bottom, expanded: hasSelection, screenFrame: screenFrame)
+            newFrame = frameFor(snapEdge: .bottom, expanded: hasSelection, isCollapsed: isCollapsed, screenFrame: screenFrame)
         }
 
         currentSnapEdge = newEdge
@@ -152,8 +158,9 @@ final class OverlayWindowManager {
     func setHasSelection(_ value: Bool) {
         guard hasSelection != value else { return }
         hasSelection = value
+        resetAutoHideTimer()
         guard let window = overlayWindow, let screen = NSScreen.main else { return }
-        let newFrame = frameFor(snapEdge: currentSnapEdge, expanded: hasSelection, screenFrame: screen.visibleFrame)
+        let newFrame = frameFor(snapEdge: currentSnapEdge, expanded: hasSelection, isCollapsed: isCollapsed, screenFrame: screen.visibleFrame)
         NSAnimationContext.runAnimationGroup { ctx in
             ctx.duration = 0.25
             ctx.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
@@ -161,10 +168,56 @@ final class OverlayWindowManager {
         }
     }
 
+    /// Collapse to the small arrow strip. Minimise button or 10s idle.
+    func collapse() {
+        guard !isCollapsed, let window = overlayWindow, let screen = NSScreen.main else { return }
+        cancelAutoHideTimer()
+        isCollapsed = true
+        let newFrame = frameFor(snapEdge: currentSnapEdge, expanded: false, isCollapsed: true, screenFrame: screen.visibleFrame)
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.25
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            window.animator().setFrame(newFrame, display: true)
+        }
+    }
+
+    /// Expand from the arrow strip. Called when user clicks the peek strip.
+    func expand() {
+        guard isCollapsed, let window = overlayWindow, let screen = NSScreen.main else { return }
+        isCollapsed = false
+        let newFrame = frameFor(snapEdge: currentSnapEdge, expanded: hasSelection, isCollapsed: false, screenFrame: screen.visibleFrame)
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.25
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            window.animator().setFrame(newFrame, display: true)
+        }
+        resetAutoHideTimer()
+    }
+
+    /// Call from the view on hover/click so the 10s auto-collapse timer resets.
+    func reportInteraction() {
+        resetAutoHideTimer()
+    }
+
+    private func resetAutoHideTimer() {
+        cancelAutoHideTimer()
+        guard !isCollapsed, !hasSelection else { return }
+        let item = DispatchWorkItem { [weak self] in
+            self?.collapse()
+        }
+        autoHideWorkItem = item
+        DispatchQueue.main.asyncAfter(deadline: .now() + autoHideInterval, execute: item)
+    }
+
+    private func cancelAutoHideTimer() {
+        autoHideWorkItem?.cancel()
+        autoHideWorkItem = nil
+    }
+
     // MARK: - Positioning
 
-    private func frameFor(snapEdge edge: DockSnapEdge, expanded: Bool = false, screenFrame: NSRect) -> NSRect {
-        let size = OverlayWindow.size(for: edge, expanded: expanded)
+    private func frameFor(snapEdge edge: DockSnapEdge, expanded: Bool = false, isCollapsed: Bool = false, screenFrame: NSRect) -> NSRect {
+        let size = OverlayWindow.size(for: edge, expanded: expanded, isCollapsed: isCollapsed)
         switch edge {
         case .bottom:
             return NSRect(
@@ -199,7 +252,7 @@ final class OverlayWindowManager {
 
     private func positionAtBottomCenter(_ window: NSWindow) {
         guard let screen = NSScreen.main else { return }
-        window.setFrame(frameFor(snapEdge: .bottom, expanded: false, screenFrame: screen.visibleFrame), display: true)
+        window.setFrame(frameFor(snapEdge: .bottom, expanded: false, isCollapsed: false, screenFrame: screen.visibleFrame), display: true)
     }
 
     private func setupDragMonitors() {

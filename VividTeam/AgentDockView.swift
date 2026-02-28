@@ -43,6 +43,7 @@ struct AgentDockView: View {
 
     @Binding var selectedID: String?
     var snapEdge: DockSnapEdge = .bottom
+    var onInteraction: (() -> Void)? = nil
 
     /// Shared catalogue — also consumed by ActiveAgentView.
     static let catalogue: [AgentProfile] = [
@@ -106,8 +107,14 @@ struct AgentDockView: View {
                 snapEdge:   snapEdge,
                 sizeVariant: .normal
             )
-            .onTapGesture { selectedID = (selectedID == agent.id) ? nil : agent.id }
-            .onHover     { hoveredID  = $0 ? agent.id : nil }
+            .onTapGesture {
+                onInteraction?()
+                selectedID = (selectedID == agent.id) ? nil : agent.id
+            }
+            .onHover { hovering in
+                hoveredID = hovering ? agent.id : nil
+                if hovering { onInteraction?() }
+            }
         }
         return Group {
             if isVertical {
@@ -173,8 +180,8 @@ struct AgentDockView: View {
         HStack(spacing: 6) {
             ForEach(agents) { agent in
                 DockIconView(agent: agent, isSelected: false, isHovered: hoveredID == agent.id, snapEdge: snapEdge, sizeVariant: .compact)
-                    .onTapGesture { selectedID = agent.id }
-                    .onHover { hoveredID = $0 ? agent.id : nil }
+                    .onTapGesture { onInteraction?(); selectedID = agent.id }
+                    .onHover { h in hoveredID = h ? agent.id : nil; if h { onInteraction?() } }
             }
         }
     }
@@ -183,16 +190,16 @@ struct AgentDockView: View {
         VStack(spacing: 6) {
             ForEach(agents) { agent in
                 DockIconView(agent: agent, isSelected: false, isHovered: hoveredID == agent.id, snapEdge: snapEdge, sizeVariant: .compact)
-                    .onTapGesture { selectedID = agent.id }
-                    .onHover { hoveredID = $0 ? agent.id : nil }
+                    .onTapGesture { onInteraction?(); selectedID = agent.id }
+                    .onHover { h in hoveredID = h ? agent.id : nil; if h { onInteraction?() } }
             }
         }
     }
 
     private func largeIconBlock(_ agent: AgentProfile) -> some View {
         DockIconView(agent: agent, isSelected: true, isHovered: hoveredID == agent.id, snapEdge: snapEdge, sizeVariant: .large)
-            .onTapGesture { selectedID = nil }
-            .onHover { hoveredID = $0 ? agent.id : nil }
+            .onTapGesture { onInteraction?(); selectedID = nil }
+            .onHover { h in hoveredID = h ? agent.id : nil; if h { onInteraction?() } }
     }
 }
 
@@ -228,8 +235,8 @@ private struct DockIconView: View {
         switch sizeVariant {
         case .compact: return isHovered ? 1.1 : 1.0
         case .normal:
-            if isHovered  { return 1.28 }
-            if isSelected { return 1.12 }
+            if isHovered  { return 1.12 }
+            if isSelected { return 1.08 }
             return 1.0
         case .large: return isHovered ? 1.08 : 1.0
         }

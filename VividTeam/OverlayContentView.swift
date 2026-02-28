@@ -14,19 +14,33 @@ struct OverlayContentView: View {
     @State private var convAI: ElevenLabsConvAI? = nil
 
     var body: some View {
+        Group {
+            if manager.isCollapsed {
+                PeekStripView(snapEdge: manager.currentSnapEdge, onTap: { manager.expand() })
+            } else {
+                dockContent
+            }
+        }
+        .onAppear { manager.setHasSelection(selectedAgentID != nil) }
+    }
+
+    private var dockContent: some View {
         VStack(spacing: 0) {
-            // ── Conversation status strip (visible only when an agent is active) ──
             if let convAI {
                 ConvAIStatusStrip(state: convAI.state,
                                   agentText: convAI.agentText,
                                   userText:  convAI.userText)
             }
-            AgentDockView(selectedID: $selectedAgentID, snapEdge: manager.currentSnapEdge)
+            AgentDockView(
+                selectedID: $selectedAgentID,
+                snapEdge: manager.currentSnapEdge,
+                onInteraction: { manager.reportInteraction() }
+            )
         }
         .overlay(alignment: .topTrailing) {
             if selectedAgentID == nil {
                 Button {
-                    NSApp.windows.first { $0 is OverlayWindow }?.orderOut(nil)
+                    manager.collapse()
                 } label: {
                     Image(systemName: "minus.circle.fill")
                         .font(.system(size: 14))
@@ -51,7 +65,6 @@ struct OverlayContentView: View {
                 .padding(10)
             }
         }
-        .onAppear { manager.setHasSelection(selectedAgentID != nil) }
         .onChange(of: selectedAgentID) { _, newID in
             manager.setHasSelection(newID != nil)
             // Always stop the previous conversation first
@@ -99,6 +112,33 @@ struct OverlayContentView: View {
                 Divider()
                 Button("Quit VividTeam") { NSApp.terminate(nil) }
             }
+    }
+}
+
+// MARK: - Peek strip (collapsed dock: small arrow at edge)
+
+private struct PeekStripView: View {
+    let snapEdge: DockSnapEdge
+    let onTap: () -> Void
+
+    private var chevronName: String {
+        switch snapEdge {
+        case .bottom: return "chevron.up"
+        case .top:    return "chevron.down"
+        case .left:   return "chevron.right"
+        case .right:  return "chevron.left"
+        }
+    }
+
+    var body: some View {
+        Button(action: onTap) {
+            Image(systemName: chevronName)
+                .font(.system(size: 12, weight: .medium))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .buttonStyle(.plain)
     }
 }
 
