@@ -12,6 +12,7 @@ struct OverlayContentView: View {
 
     @State private var selectedAgentID: String? = nil
     @State private var convAI: ElevenLabsConvAI? = nil
+    @State private var showDockMenu: Bool = false
 
     var body: some View {
         Group {
@@ -29,7 +30,8 @@ struct OverlayContentView: View {
             if let convAI {
                 ConvAIStatusStrip(state: convAI.state,
                                   agentText: convAI.agentText,
-                                  userText:  convAI.userText)
+                                  userText:  convAI.userText,
+                                  onStop: { convAI.stopAgentSpeech() })
             }
             AgentDockView(
                 selectedID: $selectedAgentID,
@@ -37,9 +39,11 @@ struct OverlayContentView: View {
                 onInteraction: { manager.reportInteraction() }
             )
         }
+        .simultaneousGesture(TapGesture().onEnded { showDockMenu = false })
         .overlay(alignment: .topTrailing) {
             if selectedAgentID == nil {
                 Button {
+                    showDockMenu = false
                     manager.collapse()
                 } label: {
                     Image(systemName: "minus.circle.fill")
@@ -53,19 +57,55 @@ struct OverlayContentView: View {
         }
         .overlay(alignment: .bottomTrailing) {
             if selectedAgentID == nil {
-                Button {
-                    AgentPersonalizationWindow.show()
-                } label: {
-                    Image(systemName: "gearshape.fill")
-                        .font(.system(size: 14))
-                        .symbolRenderingMode(.hierarchical)
-                        .foregroundStyle(.secondary)
+                VStack(alignment: .trailing, spacing: 8) {
+                    if showDockMenu {
+                        HStack(spacing: 10) {
+                            Button {
+                                showDockMenu = false
+                                AgentPersonalizationWindow.show()
+                            } label: {
+                                Image(systemName: "gearshape.fill")
+                                    .font(.system(size: 14))
+                                    .symbolRenderingMode(.hierarchical)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .buttonStyle(.plain)
+
+                            Button {
+                                showDockMenu = false
+                                // no-op for now (future notifications)
+                            } label: {
+                                Image(systemName: "bell.fill")
+                                    .font(.system(size: 14))
+                                    .symbolRenderingMode(.hierarchical)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 8)
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .transition(.opacity.combined(with: .move(edge: .trailing)))
+                    }
+
+                    Button {
+                        manager.reportInteraction()
+                        withAnimation(.easeInOut(duration: 0.15)) {
+                            showDockMenu.toggle()
+                        }
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                            .font(.system(size: 14))
+                            .symbolRenderingMode(.hierarchical)
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
                 .padding(10)
             }
         }
         .onChange(of: selectedAgentID) { _, newID in
+            showDockMenu = false
             manager.setHasSelection(newID != nil)
             // Always stop the previous conversation first
             convAI?.stop()
@@ -148,6 +188,7 @@ private struct ConvAIStatusStrip: View {
     let state:     ElevenLabsConvAI.State
     let agentText: String
     let userText:  String
+    let onStop: (() -> Void)?
 
     private var label: String {
         switch state {
@@ -180,6 +221,16 @@ private struct ConvAIStatusStrip: View {
                 .foregroundStyle(.primary.opacity(0.85))
                 .lineLimit(1)
                 .truncationMode(.tail)
+            if state == .agentSpeaking, let onStop {
+                Spacer(minLength: 0)
+                Button(action: onStop) {
+                    Image(systemName: "stop.circle.fill")
+                        .font(.system(size: 13))
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundStyle(.secondary)
+                }
+                .buttonStyle(.plain)
+            }
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 4)
