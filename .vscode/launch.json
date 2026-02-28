@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:AgentFam}",
+            "name": "Debug VividTeam",
+            "target": "VividTeam",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug VividTeam"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:AgentFam}",
+            "name": "Release VividTeam",
+            "target": "VividTeam",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release VividTeam"
+        }
+    ]
+}

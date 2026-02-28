@@ -1,0 +1,152 @@
+{
+  "": {
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/master.swiftdeps"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/ActiveAgentView.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/AgentDockView.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationView.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationWindow.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/AlertOverlayWindow.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/AppDelegate.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsConvAI.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsTTSSocket.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/HealthReminderScheduler.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/HealthReminderWindow.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/HumanAvatarView.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/MicrophoneListener.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/MiniMaxClient.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/OverlayContentView.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindow.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindowManager.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/SceneViewWrapper.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/Secrets.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/Secrets~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/Secrets.dia"
+  },
+  "/Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift": {
+    "dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.d",
+    "object": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.swift.o",
+    "swiftmodule": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.swiftdeps",
+    "diagnostics": "/Users/gust10/Documents/AgentFam/.build/index-build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.dia"
+  }
+}

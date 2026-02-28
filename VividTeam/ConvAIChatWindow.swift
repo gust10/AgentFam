@@ -5,12 +5,15 @@
 import AppKit
 import SwiftUI
 
-// MARK: - Mutable display state (separate from ConvAI so agentName/color can update)
+// MARK: - Mutable display state
+// convAI is stored here so it can be hot-swapped when the user switches agents
+// without recreating the NSHostingView.
 
 @Observable
 final class ChatDisplayState {
     var agentName:  String = "Agent"
     var agentColor: Color  = .cyan
+    var convAI:     ElevenLabsConvAI? = nil
 }
 
 // MARK: - Window
@@ -19,9 +22,10 @@ final class ConvAIChatWindow: NSPanel {
 
     private static var shared: ConvAIChatWindow?
 
-    // Show or create the panel, updating the agent identity if it changed.
     static func show(convAI: ElevenLabsConvAI, agentName: String, agentColor: Color) {
         if let win = shared {
+            // Hot-swap all mutable state — the NSHostingView stays alive and reacts.
+            win.displayState.convAI    = convAI
             win.displayState.agentName  = agentName
             win.displayState.agentColor = agentColor
             win.orderFront(nil)
@@ -40,6 +44,7 @@ final class ConvAIChatWindow: NSPanel {
     private let displayState = ChatDisplayState()
 
     private init(convAI: ElevenLabsConvAI, agentName: String, agentColor: Color) {
+        displayState.convAI    = convAI
         displayState.agentName  = agentName
         displayState.agentColor = agentColor
 
@@ -50,19 +55,19 @@ final class ConvAIChatWindow: NSPanel {
             defer:       false
         )
 
-        backgroundColor          = .clear
-        isOpaque                 = false
-        hasShadow                = true
-        level                    = .floating
+        backgroundColor             = .clear
+        isOpaque                    = false
+        hasShadow                   = true
+        level                       = .floating
         isMovableByWindowBackground = true
-        isReleasedWhenClosed     = false
-        collectionBehavior       = [.canJoinAllSpaces, .transient, .ignoresCycle]
+        isReleasedWhenClosed        = false
+        collectionBehavior          = [.canJoinAllSpaces, .transient, .ignoresCycle]
 
-        embedContent(convAI: convAI)
+        embedContent()
         positionAboveDock()
     }
 
-    private func embedContent(convAI: ElevenLabsConvAI) {
+    private func embedContent() {
         let sz  = Self.size
         let vfv = NSVisualEffectView(frame: NSRect(origin: .zero, size: sz))
         vfv.material          = .hudWindow
@@ -73,7 +78,7 @@ final class ConvAIChatWindow: NSPanel {
         vfv.layer?.masksToBounds = true
         vfv.autoresizingMask  = [.width, .height]
 
-        let rootView    = ChatPanelView(convAI: convAI, display: displayState)
+        let rootView    = ChatPanelView(display: displayState)
         let hostingView = NSHostingView(rootView: rootView)
         hostingView.frame            = NSRect(origin: .zero, size: sz)
         hostingView.autoresizingMask = [.width, .height]
@@ -88,7 +93,7 @@ final class ConvAIChatWindow: NSPanel {
         guard let screen = NSScreen.main else { return }
         let sf = screen.visibleFrame
         let x  = sf.midX - Self.size.width / 2
-        let y  = sf.minY + 16 + 140 + 8     // margin + dock height + gap
+        let y  = sf.minY + 16 + 140 + 8     // margin + dock shelf height + gap
         setFrameOrigin(NSPoint(x: x, y: y))
     }
 
@@ -99,7 +104,6 @@ final class ConvAIChatWindow: NSPanel {
 // MARK: - Root SwiftUI view
 
 private struct ChatPanelView: View {
-    let convAI:  ElevenLabsConvAI
     let display: ChatDisplayState
 
     var body: some View {
@@ -124,28 +128,32 @@ private struct ChatPanelView: View {
             Divider().opacity(0.3)
 
             // ── Messages ─────────────────────────────────────────────────────
-            ScrollViewReader { proxy in
-                ScrollView(.vertical, showsIndicators: false) {
-                    LazyVStack(alignment: .leading, spacing: 10) {
-                        if convAI.messages.isEmpty {
-                            Text("Start talking…")
-                                .font(.system(size: 11))
-                                .foregroundStyle(.tertiary)
-                                .frame(maxWidth: .infinity)
-                                .padding(.top, 20)
+            if let convAI = display.convAI {
+                ScrollViewReader { proxy in
+                    ScrollView(.vertical, showsIndicators: false) {
+                        LazyVStack(alignment: .leading, spacing: 10) {
+                            if convAI.messages.isEmpty {
+                                Text("Start talking…")
+                                    .font(.system(size: 11))
+                                    .foregroundStyle(.tertiary)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.top, 20)
+                            }
+                            ForEach(convAI.messages) { msg in
+                                BubbleRow(msg: msg, agentName: display.agentName, agentColor: display.agentColor)
+                                    .id(msg.id)
+                            }
+                            Color.clear.frame(height: 1).id("bottom")
                         }
-                        ForEach(convAI.messages) { msg in
-                            BubbleRow(msg: msg, agentName: display.agentName, agentColor: display.agentColor)
-                                .id(msg.id)
-                        }
-                        Color.clear.frame(height: 1).id("bottom")
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 10)
                     }
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 10)
+                    .onChange(of: convAI.messages.count) { _, _ in
+                        proxy.scrollTo("bottom", anchor: .bottom)
+                    }
                 }
-                .onChange(of: convAI.messages.count) { _, _ in
-                    proxy.scrollTo("bottom", anchor: .bottom)
-                }
+            } else {
+                Spacer()
             }
         }
     }
