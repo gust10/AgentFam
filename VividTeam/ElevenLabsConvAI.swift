@@ -12,6 +12,9 @@
 import Foundation
 import AVFoundation
 import Observation
+import OSLog
+
+private let logger = Logger(subsystem: "com.vividteam", category: "ConvAI")
 
 // MARK: - Message model
 
@@ -25,8 +28,12 @@ struct ConvAIMessage: Identifiable {
 // MARK: - Config
 
 struct ElevenLabsConvAIConfig {
-    var apiKey: String
-    var agentID: String? = nil  // nil = auto-create on first run
+    var apiKey:       String
+    var profileID:    String        // unique key for caching agent ID in UserDefaults
+    var agentID:      String? = nil // nil = auto-create on first run for this profile
+    var voiceID:      String        // ElevenLabs voice ID for TTS
+    var systemPrompt: String        // LLM system prompt
+    var firstMessage: String        // Agent greeting
 }
 
 // MARK: - Errors
@@ -83,7 +90,7 @@ final class ElevenLabsConvAI: NSObject {
                 let agentID = try await resolveAgentID()
                 await MainActor.run { self.openWebSocket(agentID: agentID) }
             } catch {
-                print("ConvAI: provisioning failed —", error)
+                logger.error("[\(self.config.profileID)] provisioning failed: \(error)")
                 await MainActor.run { self.state = .idle }
             }
         }
@@ -102,21 +109,22 @@ final class ElevenLabsConvAI: NSObject {
 
     // MARK: - Agent provisioning
 
-    private static let userDefaultsKey = "convai_agent_id"
+    // Each profile gets its own cached agent ID, e.g. "convai_agent_id_alex"
+    private var userDefaultsKey: String { "convai_agent_id_\(config.profileID)" }
 
     private func resolveAgentID() async throws -> String {
-        // 1. Cached from a previous run
-        if let saved = UserDefaults.standard.string(forKey: Self.userDefaultsKey), !saved.isEmpty {
+        // 1. Cached from a previous run for this profile
+        if let saved = UserDefaults.standard.string(forKey: userDefaultsKey), !saved.isEmpty {
             return saved
         }
         // 2. Explicitly provided in config
         if let explicit = config.agentID, !explicit.isEmpty {
             return explicit
         }
-        // 3. Create a new default agent via API
+        // 3. Create a new agent via API for this profile
         let id = try await createDefaultAgent()
-        UserDefaults.standard.set(id, forKey: Self.userDefaultsKey)
-        print("ConvAI: agent created and cached —", id)
+        UserDefaults.standard.set(id, forKey: userDefaultsKey)
+        logger.info("[\(self.config.profileID)] agent created and cached: \(id)")
         return id
     }
 
@@ -127,15 +135,15 @@ final class ElevenLabsConvAI: NSObject {
         req.setValue("application/json",  forHTTPHeaderField: "Content-Type")
 
         req.httpBody = try JSONSerialization.data(withJSONObject: [
-            "name": "VividTeam Assistant",
+            "name": "VividTeam \(config.profileID.capitalized)",
             "conversation_config": [
                 "agent": [
                     "prompt": [
-                        "prompt": "You are a helpful, concise voice assistant.",
+                        "prompt": config.systemPrompt,
                         "llm": "gpt-4o-mini",
                         "temperature": 1
                     ],
-                    "first_message": "Hi! How can I help you?",
+                    "first_message": config.firstMessage,
                     "language": "en"
                 ],
                 "asr": [
@@ -145,7 +153,7 @@ final class ElevenLabsConvAI: NSObject {
                 ],
                 "tts": [
                     "model_id": "eleven_turbo_v2",
-                    "voice_id": "21m00Tcm4TlvDq8ikWAM",
+                    "voice_id": config.voiceID,
                     "agent_output_audio_format": "pcm_16000"
                 ]
             ]
@@ -155,6 +163,7 @@ final class ElevenLabsConvAI: NSObject {
 
         if let http = response as? HTTPURLResponse, http.statusCode != 200 {
             let body = String(data: data, encoding: .utf8) ?? ""
+            logger.error("[\(self.config.profileID)] agent create failed HTTP \(http.statusCode): \(body)")
             throw ConvAIError.agentCreationFailed("HTTP \(http.statusCode): \(body)")
         }
 
@@ -178,6 +187,7 @@ final class ElevenLabsConvAI: NSObject {
         var req = URLRequest(url: URL(string: urlStr)!)
         req.setValue(config.apiKey, forHTTPHeaderField: "xi-api-key")
 
+        logger.info("[\(agentID)] opening WebSocket")
         let ws = URLSession.shared.webSocketTask(with: req)
         socket = ws
         ws.resume()
@@ -192,8 +202,11 @@ final class ElevenLabsConvAI: NSObject {
                 if case .string(let text) = message { self.handleMessage(text) }
                 self.receiveLoop()
             case .failure(let err):
-                print("ConvAI WS error:", err.localizedDescription)
-                DispatchQueue.main.async { self.state = .idle }
+                logger.error("[\(self.config.profileID)] WS error: \(err.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.stopCapture()
+                    self.state = .idle
+                }
             }
         }
     }
@@ -208,6 +221,7 @@ final class ElevenLabsConvAI: NSObject {
         switch type {
 
         case "conversation_initiation_metadata":
+            logger.info("[\(self.config.profileID)] conversation started — entering listening state")
             DispatchQueue.main.async {
                 self.state = .listening
                 self.startCapture()
@@ -264,7 +278,7 @@ final class ElevenLabsConvAI: NSObject {
         let nativeFmt = inputNode.outputFormat(forBus: 0)
 
         guard let converter = AVAudioConverter(from: nativeFmt, to: elevenLabsInFmt) else {
-            print("ConvAI: could not create audio converter"); return
+            logger.error("[\(self.config.profileID)] could not create audio converter"); return
         }
 
         let tapSize = AVAudioFrameCount(nativeFmt.sampleRate * 0.02)  // 20 ms chunks
@@ -272,11 +286,19 @@ final class ElevenLabsConvAI: NSObject {
             self?.convertAndSend(buf, converter: converter)
         }
 
-        do    { try captureEngine.start() }
-        catch { print("ConvAI: mic engine failed:", error) }
+        do {
+            try captureEngine.start()
+            isCapturing = true
+        } catch {
+            logger.error("[\(self.config.profileID)] mic engine failed: \(error)")
+        }
     }
 
+    private var isCapturing = false
+
     private func stopCapture() {
+        guard isCapturing else { return }
+        isCapturing = false
         captureEngine.inputNode.removeTap(onBus: 0)
         captureEngine.stop()
     }

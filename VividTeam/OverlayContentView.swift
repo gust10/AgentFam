@@ -11,14 +11,12 @@ struct OverlayContentView: View {
     let manager: OverlayWindowManager
 
     @State private var selectedAgentID: String? = nil
-    @State private var convAI = ElevenLabsConvAI(config: ElevenLabsConvAIConfig(
-        apiKey:  Secrets.elevenLabsAPIKey,
-        agentID: Secrets.elevenLabsAgentID
-    ))
+    @State private var convAI: ElevenLabsConvAI? = nil
 
     var body: some View {
         VStack(spacing: 0) {
-            if selectedAgentID != nil {
+            // ── Conversation status strip (visible only when an agent is active) ──
+            if let convAI {
                 ConvAIStatusStrip(state: convAI.state,
                                   agentText: convAI.agentText,
                                   userText:  convAI.userText)
@@ -26,16 +24,27 @@ struct OverlayContentView: View {
             AgentDockView(selectedID: $selectedAgentID, snapEdge: manager.currentSnapEdge)
         }
         .onChange(of: selectedAgentID) { _, newID in
-            if let id = newID {
-                let agent = AgentDockView.catalogue.first { $0.id == id }
-                convAI.start()
+            // Always stop the previous conversation first
+            convAI?.stop()
+
+            if let id = newID,
+               let agent = AgentDockView.catalogue.first(where: { $0.id == id }) {
+                let fresh = ElevenLabsConvAI(config: ElevenLabsConvAIConfig(
+                    apiKey:       Secrets.elevenLabsAPIKey,
+                    profileID:    agent.id,
+                    voiceID:      agent.voiceID,
+                    systemPrompt: agent.systemPrompt,
+                    firstMessage: agent.firstMessage
+                ))
+                convAI = fresh
+                fresh.start()
                 ConvAIChatWindow.show(
-                    convAI:     convAI,
-                    agentName:  agent?.fullName ?? "Agent",
-                    agentColor: agent?.color    ?? .cyan
+                    convAI:     fresh,
+                    agentName:  agent.fullName,
+                    agentColor: agent.color
                 )
             } else {
-                convAI.stop()
+                convAI = nil
                 ConvAIChatWindow.hide()
             }
         }
