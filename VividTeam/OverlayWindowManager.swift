@@ -35,6 +35,9 @@ final class OverlayWindowManager {
     /// Current snap edge; determines dock layout (horizontal vs vertical) and position.
     private(set) var currentSnapEdge: DockSnapEdge = .bottom
 
+    /// True when an agent is selected; window uses expanded size and layout.
+    private(set) var hasSelection: Bool = false
+
     // MARK: - Private state
 
     private var overlayWindow: OverlayWindow?
@@ -97,7 +100,7 @@ final class OverlayWindowManager {
         if !nearLeft && !nearRight && !nearBottom && !nearTop {
             currentSnapEdge = .bottom
             // If we were in vertical layout, resize back to horizontal and keep center.
-            let horizontalSize = OverlayWindow.size(for: .bottom)
+            let horizontalSize = OverlayWindow.size(for: .bottom, expanded: hasSelection)
             if abs(window.frame.width - horizontalSize.width) > 1 {
                 let centerX = frame.midX
                 let centerY = frame.midY
@@ -121,16 +124,16 @@ final class OverlayWindowManager {
 
         if nearLeft && (distLeft <= distRight && distLeft <= distBottom && distLeft <= distTop) {
             newEdge = .left
-            newFrame = frameFor(snapEdge: .left, screenFrame: screenFrame)
+            newFrame = frameFor(snapEdge: .left, expanded: hasSelection, screenFrame: screenFrame)
         } else if nearRight && (distRight <= distLeft && distRight <= distBottom && distRight <= distTop) {
             newEdge = .right
-            newFrame = frameFor(snapEdge: .right, screenFrame: screenFrame)
+            newFrame = frameFor(snapEdge: .right, expanded: hasSelection, screenFrame: screenFrame)
         } else if nearTop && (nearBottom ? distTop <= distBottom : true) {
             newEdge = .top
-            newFrame = frameFor(snapEdge: .top, screenFrame: screenFrame)
+            newFrame = frameFor(snapEdge: .top, expanded: hasSelection, screenFrame: screenFrame)
         } else {
             newEdge = .bottom
-            newFrame = frameFor(snapEdge: .bottom, screenFrame: screenFrame)
+            newFrame = frameFor(snapEdge: .bottom, expanded: hasSelection, screenFrame: screenFrame)
         }
 
         currentSnapEdge = newEdge
@@ -145,10 +148,23 @@ final class OverlayWindowManager {
         isDragging = dragging
     }
 
+    /// Called when selection changes; animates window to expanded/compact size.
+    func setHasSelection(_ value: Bool) {
+        guard hasSelection != value else { return }
+        hasSelection = value
+        guard let window = overlayWindow, let screen = NSScreen.main else { return }
+        let newFrame = frameFor(snapEdge: currentSnapEdge, expanded: hasSelection, screenFrame: screen.visibleFrame)
+        NSAnimationContext.runAnimationGroup { ctx in
+            ctx.duration = 0.25
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            window.animator().setFrame(newFrame, display: true)
+        }
+    }
+
     // MARK: - Positioning
 
-    private func frameFor(snapEdge edge: DockSnapEdge, screenFrame: NSRect) -> NSRect {
-        let size = OverlayWindow.size(for: edge)
+    private func frameFor(snapEdge edge: DockSnapEdge, expanded: Bool = false, screenFrame: NSRect) -> NSRect {
+        let size = OverlayWindow.size(for: edge, expanded: expanded)
         switch edge {
         case .bottom:
             return NSRect(
@@ -183,7 +199,7 @@ final class OverlayWindowManager {
 
     private func positionAtBottomCenter(_ window: NSWindow) {
         guard let screen = NSScreen.main else { return }
-        window.setFrame(frameFor(snapEdge: .bottom, screenFrame: screen.visibleFrame), display: true)
+        window.setFrame(frameFor(snapEdge: .bottom, expanded: false, screenFrame: screen.visibleFrame), display: true)
     }
 
     private func setupDragMonitors() {

@@ -23,13 +23,18 @@ import SwiftUI
 
 final class OverlayWindow: NSWindow {
 
-    // Horizontal bar: 5 icons + gaps + padding.
-    static let horizontalSize = NSSize(width: 390, height: 140)
-    // Vertical stack: single column (avatar + label column).
-    static let verticalSize = NSSize(width: 130, height: 450)
+    // Compact: single row/column of 5 icons.
+    static let horizontalCompactSize = NSSize(width: 400, height: 100)
+    static let verticalCompactSize   = NSSize(width: 100, height: 560)
+    // Expanded: one large selected icon + four smaller grayed.
+    static let horizontalExpandedSize = NSSize(width: 420, height: 220)
+    static let verticalExpandedSize  = NSSize(width: 220, height: 450)
 
-    static func size(for edge: DockSnapEdge) -> NSSize {
-        edge.isVertical ? verticalSize : horizontalSize
+    static func size(for edge: DockSnapEdge, expanded: Bool = false) -> NSSize {
+        if edge.isVertical {
+            return expanded ? verticalExpandedSize : verticalCompactSize
+        }
+        return expanded ? horizontalExpandedSize : horizontalCompactSize
     }
 
     private weak var manager: OverlayWindowManager?
@@ -38,7 +43,8 @@ final class OverlayWindow: NSWindow {
 
     init(manager: OverlayWindowManager) {
         self.manager = manager
-        let contentRect = NSRect(origin: .zero, size: OverlayWindow.horizontalSize)
+        let initialSize = OverlayWindow.size(for: .bottom, expanded: false)
+        let contentRect = NSRect(origin: .zero, size: initialSize)
 
         super.init(
             contentRect: contentRect,
@@ -86,7 +92,7 @@ final class OverlayWindow: NSWindow {
     // MARK: - Content embedding
 
     private func embedContent(manager: OverlayWindowManager) {
-        let size = OverlayWindow.horizontalSize
+        let size = OverlayWindow.size(for: .bottom, expanded: false)
 
         let vfv = NSVisualEffectView(frame: NSRect(origin: .zero, size: size))
         vfv.material          = .hudWindow

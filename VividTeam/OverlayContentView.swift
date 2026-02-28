@@ -23,7 +23,37 @@ struct OverlayContentView: View {
             }
             AgentDockView(selectedID: $selectedAgentID, snapEdge: manager.currentSnapEdge)
         }
+        .overlay(alignment: .topTrailing) {
+            if selectedAgentID == nil {
+                Button {
+                    NSApp.windows.first { $0 is OverlayWindow }?.orderOut(nil)
+                } label: {
+                    Image(systemName: "minus.circle.fill")
+                        .font(.system(size: 14))
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundStyle(.secondary)
+                }
+                .buttonStyle(.plain)
+                .padding(10)
+            }
+        }
+        .overlay(alignment: .bottomTrailing) {
+            if selectedAgentID == nil {
+                Button {
+                    AgentPersonalizationWindow.show()
+                } label: {
+                    Image(systemName: "gearshape.fill")
+                        .font(.system(size: 14))
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundStyle(.secondary)
+                }
+                .buttonStyle(.plain)
+                .padding(10)
+            }
+        }
+        .onAppear { manager.setHasSelection(selectedAgentID != nil) }
         .onChange(of: selectedAgentID) { _, newID in
+            manager.setHasSelection(newID != nil)
             // Always stop the previous conversation first
             convAI?.stop()
 

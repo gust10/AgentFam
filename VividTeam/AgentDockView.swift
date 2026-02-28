@@ -19,6 +19,24 @@ struct AgentProfile: Identifiable {
     let firstMessage: String       // Agent greeting
 }
 
+// MARK: - Placement when one icon is selected (large vs grayed strip)
+
+private enum LargeIconPlacement {
+    case above   // bottom edge: large above, grayed below
+    case below   // top edge: grayed above, large below
+    case leading // right edge: large left, grayed right
+    case trailing // left edge: grayed left, large right
+
+    static func forEdge(_ edge: DockSnapEdge) -> LargeIconPlacement {
+        switch edge {
+        case .bottom: return .above
+        case .top:    return .below
+        case .left:  return .trailing
+        case .right: return .leading
+        }
+    }
+}
+
 // MARK: - Dock view
 
 struct AgentDockView: View {
@@ -68,20 +86,30 @@ struct AgentDockView: View {
     @State private var hoveredID: String?
 
     private var isVertical: Bool { snapEdge.isVertical }
+    private var placement: LargeIconPlacement { .forEdge(snapEdge) }
 
     var body: some View {
+        if let sid = selectedID,
+           let selected = Self.catalogue.first(where: { $0.id == sid }) {
+            expandedLayout(selected: selected, others: Self.catalogue.filter { $0.id != sid })
+        } else {
+            compactLayout()
+        }
+    }
+
+    private func compactLayout() -> some View {
         let content = ForEach(Self.catalogue) { agent in
             DockIconView(
                 agent:      agent,
                 isSelected: selectedID == agent.id,
                 isHovered:  hoveredID  == agent.id,
-                snapEdge:   snapEdge
+                snapEdge:   snapEdge,
+                sizeVariant: .normal
             )
             .onTapGesture { selectedID = (selectedID == agent.id) ? nil : agent.id }
-            .onHover      { hoveredID  = $0 ? agent.id : nil }
+            .onHover     { hoveredID  = $0 ? agent.id : nil }
         }
-
-        Group {
+        return Group {
             if isVertical {
                 VStack(alignment: snapEdge == .right ? .trailing : .leading, spacing: 6) {
                     content
@@ -99,23 +127,112 @@ struct AgentDockView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
+
+    @ViewBuilder
+    private func grayedStripView(_ agents: [AgentProfile]) -> some View {
+        if isVertical {
+            grayedColumn(agents)
+        } else {
+            grayedRow(agents)
+        }
+    }
+
+    private func expandedLayout(selected: AgentProfile, others: [AgentProfile]) -> some View {
+        let grayedStrip = grayedStripView(others)
+        let largeBlock = largeIconBlock(selected)
+
+        return Group {
+            switch placement {
+            case .above:
+                VStack(spacing: 10) {
+                    largeBlock
+                    grayedStrip
+                }
+            case .below:
+                VStack(spacing: 10) {
+                    grayedStrip
+                    largeBlock
+                }
+            case .leading:
+                HStack(spacing: 10) {
+                    largeBlock
+                    grayedStrip
+                }
+            case .trailing:
+                HStack(spacing: 10) {
+                    grayedStrip
+                    largeBlock
+                }
+            }
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private func grayedRow(_ agents: [AgentProfile]) -> some View {
+        HStack(spacing: 6) {
+            ForEach(agents) { agent in
+                DockIconView(agent: agent, isSelected: false, isHovered: hoveredID == agent.id, snapEdge: snapEdge, sizeVariant: .compact)
+                    .onTapGesture { selectedID = agent.id }
+                    .onHover { hoveredID = $0 ? agent.id : nil }
+            }
+        }
+    }
+
+    private func grayedColumn(_ agents: [AgentProfile]) -> some View {
+        VStack(spacing: 6) {
+            ForEach(agents) { agent in
+                DockIconView(agent: agent, isSelected: false, isHovered: hoveredID == agent.id, snapEdge: snapEdge, sizeVariant: .compact)
+                    .onTapGesture { selectedID = agent.id }
+                    .onHover { hoveredID = $0 ? agent.id : nil }
+            }
+        }
+    }
+
+    private func largeIconBlock(_ agent: AgentProfile) -> some View {
+        DockIconView(agent: agent, isSelected: true, isHovered: hoveredID == agent.id, snapEdge: snapEdge, sizeVariant: .large)
+            .onTapGesture { selectedID = nil }
+            .onHover { hoveredID = $0 ? agent.id : nil }
+    }
+}
+
+// MARK: - Icon size variant (compact = grayed strip, normal = dock, large = selected)
+
+private enum DockIconSizeVariant {
+    case compact  // small, grayed, no label
+    case normal
+    case large    // selected in expanded layout
 }
 
 // MARK: - Single dock icon
 
 private struct DockIconView: View {
 
-    let agent:      AgentProfile
-    let isSelected: Bool
-    let isHovered:  Bool
-    var snapEdge:   DockSnapEdge = .bottom
+    let agent:       AgentProfile
+    let isSelected:  Bool
+    let isHovered:   Bool
+    var snapEdge:    DockSnapEdge = .bottom
+    var sizeVariant: DockIconSizeVariant = .normal
 
     private var isVertical: Bool { snapEdge.isVertical }
 
+    private var avatarFrame: (outer: CGFloat, inner: CGFloat) {
+        switch sizeVariant {
+        case .compact: return (44, 36)
+        case .normal:  return (66, 58)
+        case .large:   return (96, 84)
+        }
+    }
+
     private var scale: CGFloat {
-        if isHovered  { return 1.28 }
-        if isSelected { return 1.12 }
-        return 1.0
+        switch sizeVariant {
+        case .compact: return isHovered ? 1.1 : 1.0
+        case .normal:
+            if isHovered  { return 1.28 }
+            if isSelected { return 1.12 }
+            return 1.0
+        case .large: return isHovered ? 1.08 : 1.0
+        }
     }
 
     private var scaleAnchor: UnitPoint {
@@ -126,37 +243,35 @@ private struct DockIconView: View {
         }
     }
 
+    private var showLabel: Bool { sizeVariant != .compact }
+    private var grayedOpacity: CGFloat { sizeVariant == .compact ? 0.65 : 1.0 }
+
     var body: some View {
         Group {
-            if isVertical {
-                HStack(alignment: .center, spacing: 6) {
-                    avatarBlock
-                    VStack(alignment: .leading, spacing: 2) {
-                        labelView
-                        dotView
-                    }
-                }
-            } else {
-                VStack(spacing: 3) {
-                    avatarBlock
+            // Name below icon for both horizontal and vertical.
+            VStack(spacing: 3) {
+                avatarBlock
+                if showLabel {
                     labelView
                     dotView
                 }
             }
         }
+        .opacity(grayedOpacity)
         .help("\(agent.fullName) · \(agent.description)")
     }
 
     private var avatarBlock: some View {
-        ZStack {
+        let (outer, inner) = avatarFrame
+        return ZStack {
             Circle()
-                .strokeBorder(agent.color.opacity(isSelected ? 0.75 : 0), lineWidth: 2.5)
-                .frame(width: 66, height: 66)
-                .shadow(color: agent.color.opacity(isSelected ? 0.5 : 0), radius: 10)
+                .strokeBorder(agent.color.opacity(isSelected ? 0.75 : 0), lineWidth: sizeVariant == .large ? 3 : 2.5)
+                .frame(width: outer, height: outer)
+                .shadow(color: agent.color.opacity(isSelected ? 0.5 : 0), radius: sizeVariant == .large ? 12 : 10)
                 .animation(.easeInOut(duration: 0.2), value: isSelected)
 
             HumanAvatarView(style: agent.avatarStyle)
-                .frame(width: 58, height: 58)
+                .frame(width: inner, height: inner)
                 .clipShape(Circle())
                 .overlay(Circle().strokeBorder(.white.opacity(0.18), lineWidth: 0.5))
                 .shadow(
@@ -164,7 +279,7 @@ private struct DockIconView: View {
                     radius: isHovered ? 10 : 5, y: 3
                 )
         }
-        .frame(width: 66, height: 66)
+        .frame(width: outer, height: outer)
         .scaleEffect(scale, anchor: scaleAnchor)
         .animation(.spring(response: 0.22, dampingFraction: 0.60), value: isHovered)
         .animation(.spring(response: 0.22, dampingFraction: 0.60), value: isSelected)
@@ -172,7 +287,7 @@ private struct DockIconView: View {
 
     private var labelView: some View {
         Text(agent.name)
-            .font(.system(size: 10, weight: .medium))
+            .font(.system(size: sizeVariant == .large ? 12 : 10, weight: .medium))
             .foregroundStyle(
                 (isSelected || isHovered)
                     ? Color.primary.opacity(0.9)
