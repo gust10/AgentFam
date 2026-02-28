@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>VividTeam</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.vividteam.app</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSUIElement</key>
+    <true/>
+
+    <!-- Required for SFSpeechRecognizer -->
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>VividTeam uses speech recognition to understand your voice commands.</string>
+
+    <!-- Required for AVAudioEngine mic input -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>VividTeam needs microphone access to hear you speak to your agents.</string>
+</dict>
+</plist>
