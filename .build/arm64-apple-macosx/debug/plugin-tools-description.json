@@ -17,129 +17,129 @@
 
   ],
   "swiftCommands" : {
-    "C.VividTeam-arm64-apple-macosx15.0-debug.module" : {
+    "C.VividTeam-arm64-apple-macosx26.0-debug.module" : {
       "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
-      "fileList" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/sources",
-      "importPath" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/Modules",
+      "fileList" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/sources",
+      "importPath" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/Modules",
       "inputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ActiveAgentView.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ActiveAgentView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/AgentDockView.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentDockView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationView.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentPersonalizationView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationWindow.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentPersonalizationWindow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/AlertOverlayWindow.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AlertOverlayWindow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/AppDelegate.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AppDelegate.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ConvAIChatWindow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ConversationEngine.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsConvAI.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ElevenLabsConvAI.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsTTSSocket.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ElevenLabsTTSSocket.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/HealthReminderScheduler.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HealthReminderScheduler.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/HealthReminderWindow.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HealthReminderWindow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/HumanAvatarView.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HumanAvatarView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/MicrophoneListener.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/MicrophoneListener.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/MiniMaxClient.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/MiniMaxClient.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/OverlayContentView.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayContentView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindow.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayWindow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindowManager.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayWindowManager.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/SceneViewWrapper.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/SceneViewWrapper.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/Secrets.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/VividTeamApp.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/sources"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/sources"
         }
       ],
       "isLibrary" : false,
       "moduleName" : "VividTeam",
-      "moduleOutputPath" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/Modules/VividTeam.swiftmodule",
+      "moduleOutputPath" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/Modules/VividTeam.swiftmodule",
       "objects" : [
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.swift.o"
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -148,26 +148,27 @@
         "-enable-batch-mode",
         "-serialize-diagnostics",
         "-index-store-path",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/index/store",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/index/store",
         "-Onone",
         "-enable-testing",
-        "-j10",
+        "-j8",
         "-DSWIFT_PACKAGE",
         "-DDEBUG",
         "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
         "-module-cache-path",
-        "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/ModuleCache",
+        "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/ModuleCache",
         "-parseable-output",
         "-Xfrontend",
         "-entry-point-function-name",
         "-Xfrontend",
         "VividTeam_main",
+        "-color-diagnostics",
         "-swift-version",
         "5",
         "-plugin-path",
         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
         "-sdk",
-        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
         "-F",
         "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
         "-F",
@@ -180,7 +181,7 @@
         "-Xcc",
         "-isysroot",
         "-Xcc",
-        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
         "-Xcc",
         "-F",
         "-Xcc",
@@ -194,124 +195,124 @@
         "-Xcc",
         "-g",
         "-package-name",
-        "agentfam"
+        "chinese_ferraris"
       ],
-      "outputFileMapPath" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/output-file-map.json",
+      "outputFileMapPath" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/output-file-map.json",
       "outputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/Modules/VividTeam.swiftmodule"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/Modules/VividTeam.swiftmodule"
         }
       ],
       "prepareForIndexing" : false,
       "sources" : [
-        "/Users/gust10/Documents/AgentFam/VividTeam/ActiveAgentView.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/AgentDockView.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationView.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationWindow.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/AlertOverlayWindow.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/AppDelegate.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsConvAI.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsTTSSocket.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/HealthReminderScheduler.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/HealthReminderWindow.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/HumanAvatarView.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/MicrophoneListener.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/MiniMaxClient.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/OverlayContentView.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindow.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindowManager.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/SceneViewWrapper.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift",
-        "/Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift"
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ActiveAgentView.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentDockView.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentPersonalizationView.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentPersonalizationWindow.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AlertOverlayWindow.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AppDelegate.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ConvAIChatWindow.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ConversationEngine.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ElevenLabsConvAI.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ElevenLabsTTSSocket.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HealthReminderScheduler.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HealthReminderWindow.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HumanAvatarView.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/MicrophoneListener.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/MiniMaxClient.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayContentView.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayWindow.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayWindowManager.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/SceneViewWrapper.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/Secrets.swift",
+        "/Users/louisawong/Documents/chinese-ferraris/VividTeam/VividTeamApp.swift"
       ],
-      "tempsPath" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build",
+      "tempsPath" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build",
       "wholeModuleOptimization" : false
     }
   },
@@ -324,57 +325,58 @@
       "-module-name",
       "VividTeam",
       "-package-name",
-      "agentfam",
+      "chinese_ferraris",
       "-c",
-      "/Users/gust10/Documents/AgentFam/VividTeam/ActiveAgentView.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/AgentDockView.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationView.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationWindow.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/AlertOverlayWindow.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/AppDelegate.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsConvAI.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsTTSSocket.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/HealthReminderScheduler.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/HealthReminderWindow.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/HumanAvatarView.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/MicrophoneListener.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/MiniMaxClient.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/OverlayContentView.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindow.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindowManager.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/SceneViewWrapper.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift",
-      "/Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ActiveAgentView.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentDockView.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentPersonalizationView.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentPersonalizationWindow.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AlertOverlayWindow.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AppDelegate.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ConvAIChatWindow.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ConversationEngine.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ElevenLabsConvAI.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ElevenLabsTTSSocket.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HealthReminderScheduler.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HealthReminderWindow.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HumanAvatarView.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/MicrophoneListener.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/MiniMaxClient.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayContentView.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayWindow.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayWindowManager.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/SceneViewWrapper.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/Secrets.swift",
+      "/Users/louisawong/Documents/chinese-ferraris/VividTeam/VividTeamApp.swift",
       "-I",
-      "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/Modules",
+      "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/Modules",
       "-target",
       "arm64-apple-macosx14.0",
       "-incremental",
       "-enable-batch-mode",
       "-serialize-diagnostics",
       "-index-store-path",
-      "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/index/store",
+      "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/index/store",
       "-Onone",
       "-enable-testing",
-      "-j10",
+      "-j8",
       "-DSWIFT_PACKAGE",
       "-DDEBUG",
       "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
       "-module-cache-path",
-      "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/ModuleCache",
+      "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/ModuleCache",
       "-parseable-output",
       "-Xfrontend",
       "-entry-point-function-name",
       "-Xfrontend",
       "VividTeam_main",
+      "-color-diagnostics",
       "-swift-version",
       "5",
       "-plugin-path",
       "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
       "-sdk",
-      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
       "-F",
       "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
       "-F",
@@ -387,7 +389,7 @@
       "-Xcc",
       "-isysroot",
       "-Xcc",
-      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
       "-Xcc",
       "-F",
       "-Xcc",
@@ -401,7 +403,7 @@
       "-Xcc",
       "-g",
       "-package-name",
-      "agentfam",
+      "chinese_ferraris",
       "-driver-use-frontend-path",
       "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
     ]
@@ -423,7 +425,7 @@
     }
   },
   "writeCommands" : {
-    "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam-entitlement.plist" : {
+    "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam-entitlement.plist" : {
       "alwaysOutOfDate" : false,
       "inputs" : [
         {
@@ -435,9 +437,9 @@
           "name" : "<com.apple.security.get-task-allow>"
         }
       ],
-      "outputFilePath" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam-entitlement.plist"
+      "outputFilePath" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam-entitlement.plist"
     },
-    "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/sources" : {
+    "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/sources" : {
       "alwaysOutOfDate" : false,
       "inputs" : [
         {
@@ -446,92 +448,92 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ActiveAgentView.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ActiveAgentView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/AgentDockView.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentDockView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationView.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentPersonalizationView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/AgentPersonalizationWindow.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AgentPersonalizationWindow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/AlertOverlayWindow.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AlertOverlayWindow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/AppDelegate.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/AppDelegate.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ConvAIChatWindow.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ConvAIChatWindow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ConversationEngine.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ConversationEngine.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsConvAI.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ElevenLabsConvAI.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/ElevenLabsTTSSocket.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/ElevenLabsTTSSocket.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/HealthReminderScheduler.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HealthReminderScheduler.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/HealthReminderWindow.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HealthReminderWindow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/HumanAvatarView.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/HumanAvatarView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/MicrophoneListener.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/MicrophoneListener.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/MiniMaxClient.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/MiniMaxClient.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/OverlayContentView.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayContentView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindow.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayWindow.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/OverlayWindowManager.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/OverlayWindowManager.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/SceneViewWrapper.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/SceneViewWrapper.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/Secrets.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/Secrets.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/VividTeam/VividTeamApp.swift"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/VividTeam/VividTeamApp.swift"
         }
       ],
-      "outputFilePath" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/sources"
+      "outputFilePath" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/sources"
     },
-    "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.product/Objects.LinkFileList" : {
+    "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.product/Objects.LinkFileList" : {
       "alwaysOutOfDate" : false,
       "inputs" : [
         {
@@ -540,92 +542,92 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ActiveAgentView.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AgentDockView.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationView.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AgentPersonalizationWindow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AlertOverlayWindow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/AppDelegate.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ConvAIChatWindow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ConversationEngine.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsConvAI.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/ElevenLabsTTSSocket.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderScheduler.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/HealthReminderWindow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/HumanAvatarView.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/MicrophoneListener.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/MiniMaxClient.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayContentView.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindow.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/OverlayWindowManager.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/SceneViewWrapper.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/Secrets.swift.o"
         },
         {
           "kind" : "file",
-          "name" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.swift.o"
+          "name" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.build/VividTeamApp.swift.o"
         }
       ],
-      "outputFilePath" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/VividTeam.product/Objects.LinkFileList"
+      "outputFilePath" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/VividTeam.product/Objects.LinkFileList"
     },
-    "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+    "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
       "alwaysOutOfDate" : true,
       "inputs" : [
         {
@@ -637,7 +639,7 @@
           "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
         }
       ],
-      "outputFilePath" : "/Users/gust10/Documents/AgentFam/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+      "outputFilePath" : "/Users/louisawong/Documents/chinese-ferraris/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
     }
   }
 }
